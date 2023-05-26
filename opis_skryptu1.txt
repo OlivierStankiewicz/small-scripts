@@ -1,0 +1,39 @@
+	Ten skrypt jest używany do przetworzenia dwóch plików zawierających dane pobierań.
+
+	Najpierw opracowywany jest plik .ftp
+
+	Pierwsze polecenie to grep, który pozostawia tylko linijki zawierające "OK DOWNLOAD", co oznacza że pobieranie się powiodło.
+
+	Następnie poleceniem cut pozostawiam tylko 2 i 4 kolumnę używając cudzysłowu jako separatora, dzięki czemu w pliku zostają tylko adresy IP oraz pobierane pliki.
+
+	Kolejne użycie polecenia cut służy temu, aby ze ścieżki pobieranego pliku pozostawić jedynie ostatnią jej część.
+
+	grep '\.iso$' pozostawia w pliku tylko linijki które kończą się '.iso', czyli zawierają nazwy dystrybucji linuxa.
+
+	uniq wyrzuca z pliku powtórzenia, czyli sytuacje w których ten sam adres IP pobrał tą samą dystrybucję.
+
+	Następny cut służy temu, aby pozostawić w pliku tylko same nazwy dystrybucji, żeby później można było łatwo policzyć ich ilość.
+
+	> tmpfile wpisuje wynik wszystkich poprzednich poleceń do pliku o nazwie tmpfile.
+
+	W drugiej kolejności opracowywany jest plik .www
+
+	Pierwszym poleceniem jest cut, który jako separatora używa spacji, i pozostawia tylko 1, 7 i 9 kolumnę
+
+	grep '200$' pozostawia tylko wiersze które kończą się '200', co w tym przypadku oznacza kod poprawnego pobrania pliku
+
+	Następne 2 cuty pozostawiają w pliku tylko adresy IP i nazwy pobranych plików
+
+	grep '\.iso$' działa analogicznie jak w pliku .ftp
+
+	uniq pozbywa się pobrań tej samej dystrybucji przez ten sam adres IP
+
+	cut z separatorem '/' pozostawia tylko nazwy dystrybucji
+
+	>> tmpfile przekierowuje wynik poleceń do pliku tmpfile dopisując do go do niego
+
+	Zawartosc pliku tmpfile zostaje posortowana za pomocą polecenia sort, uniq -c grupuje nazwy dystrybucji licząc liczbę ich powtórzeń, sort -k 1n sortuje wyniki rosnąco ilością powtórzeń.
+
+	> outfile przekierowuje wynik przekształcenia tmpfile do pliku o nazwie outfile
+
+	Na koniec polecenie zip tworzy archiwum, do którego zostaje wrzucony plik outfile zawierający liczby unikalnych pobrań konkretnych dystrybucji linux.

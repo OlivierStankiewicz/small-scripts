@@ -1,0 +1,21 @@
+Ten skrypt służy do obsługi wyszukiwania plików w systemie.
+
+Posiada on proste menu wyboru opcji od 1 do 8
+
+Opcje 1-5 to opcjonalne kryteria wyszukiwania plików, jeśli użytkownik chce zrezygnować z jakiegoś kryterium, należy wybrać je i podać pustą wartość
+
+1 to wybór nazwy pliku. Jeśli nazwa nie zostanie podana, nazwa szukanego pliku jest traktowana jako dowolna.
+
+2 to podanie ścieżki do pliku (zaczynając od lokalizacji root), jeśli nie zostanie podana domślna lokalizacja to obecna lokalizacja użytkownika
+
+3 to filtrowanie plików po czasie ostatniej modyfikacji (tylko pliki modyfikowane mniej niż podaną ilość minut temu)
+
+4 to filtrowanie po maksymalnym rozmiarze (pliki mniejsze niż podany rozmiar), dostępne są do wyboru 4 jednostki: bajty, kilobajty, megabajty i gigabajty
+
+5 to filtrowanie po rozszerzeniu (można podać dowolne rozszerzenie, jednak dla plików bez rozszerzenia należy podać 'bez', gdyż brak wartości oznacza wyczyszczenie tego kryterium)
+
+Opcja 6 to włączenie lub wyłączenie wyświetlania zawartości znalezionych plików, ta opcja działa na zasadzie toggle - jeśli jest wyłączona to wybranie jej przełączy na włączoną i odwrotnie
+
+Opcja 7 to zatwierdzenie wybranych opcji 1-6 oraz wyszukanie plików spełniających podane kryteria, po znalezieniu w przypadku gdy opcja 6 jest włączona następuje wyświetlenie zawartości. Wyszukiwanie następuje z ustawionej lokalizacji rekurencyjnie wgłąb
+
+Opcja 8 to zakończenie działania programu, kończy ona pętle while w której odbywa się cała jego funkcjonalność, przez co właśnie program się kończy
